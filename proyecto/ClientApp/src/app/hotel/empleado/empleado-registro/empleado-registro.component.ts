@@ -61,6 +61,7 @@ export class EmpleadoRegistroComponent implements OnInit {
         this.empleado = p;
       }
     });
+    window.location.reload();
   }
   obtenerUsuario() {
     var lista = JSON.parse(sessionStorage.getItem('Login'));

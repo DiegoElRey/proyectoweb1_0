@@ -66,7 +66,13 @@ export class ReservaService {
         catchError(this.handleErrorService.handleError<Reserva[]>('Buscar Reserva', null))
       );
   }
-  
+  put(reserva: Reserva): Observable<Reserva> {
+    return this.http.put<Reserva>(this.baseUrl + 'api/Reserva/'+ reserva.idReserva, reserva, httpOptions)
+      .pipe(
+        tap(_ => this.handleErrorService.log('datos enviados')),
+        catchError(this.handleErrorService.handleError<Reserva>('Registrar Reserva', null))
+      );
+  }
 
   post(reserva: Reserva): Observable<Reserva> {
     return this.http.post<Reserva>(this.baseUrl + 'api/Reserva', reserva)

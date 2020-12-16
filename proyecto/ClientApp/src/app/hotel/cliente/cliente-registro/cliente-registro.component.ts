@@ -52,5 +52,6 @@ export class ClienteRegistroComponent implements OnInit {
         this.cliente = p;
       }
     });
+    window.location.reload();
   }
 }

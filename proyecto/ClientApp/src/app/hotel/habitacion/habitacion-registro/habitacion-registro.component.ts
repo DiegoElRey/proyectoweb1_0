@@ -30,6 +30,7 @@ export class HabitacionRegistroComponent implements OnInit {
         this.habitacion = p;
       }
     });
+    window.location.reload();
   }
 
 }

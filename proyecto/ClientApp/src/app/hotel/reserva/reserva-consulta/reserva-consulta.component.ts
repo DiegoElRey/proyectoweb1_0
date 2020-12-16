@@ -15,6 +15,7 @@ export class ReservaConsultaComponent implements OnInit {
   tipo: string;
   page = 1;
   pageSize =5;
+  estado: boolean;
   constructor(private reservaService: ReservaService) { }
   
   ngOnInit(){
@@ -25,9 +26,29 @@ export class ReservaConsultaComponent implements OnInit {
     this.actualizarListaSignal();
   }
  
+  checkin(reserva: Reserva){
+    reserva.habitacion.estado = "Ocupado";
+    this.reservaService.put(reserva).subscribe(p =>{
+        if(p != null){
+          alert("Se realizó check in");
+          this.estado = true;
+        }
+    });
+  }
+  checkout(reserva: Reserva){
+    reserva.habitacion.estado = "desocupado";
+    this.reservaService.put(reserva).subscribe(p =>{
+        if(p != null){
+          alert("Se realizó check out");
+          this.estado = true;
+        }
+    });
+  }
   private actualizarListaSignal(){
     this.reservaService.signalRecived.subscribe((reserva: Reserva) => {
-      this.reservas.push(reserva);
+      this.reservaService.get().subscribe(result =>{
+        this.reservas = result;
+       });
     });
   }
 

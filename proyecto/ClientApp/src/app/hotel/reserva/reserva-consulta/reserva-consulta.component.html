@@ -19,6 +19,8 @@
                 <th scope="col">Número de habitación </th>
                 <th scope="col">Fecha de la reserva </th>
                 <th scope="col">Fecha de entrada </th>
+                <th scope="col">CHECK IN </th>
+                <th scope="col">CHECK OUT </th>
                 <th scope="col">Fecha de salida </th>
                 <th scope="col">Numero de días </th>
                 <th scope="col">iva </th>
@@ -34,6 +36,8 @@
                 <td>{{ reserva.idHabitacion }}</td>
                 <td>{{ reserva.fechaReserva }}</td>
                 <td>{{ reserva.fechaEntrada }}</td>
+                <td><button [disabled]="estado" (click)="checkin(reserva);" class="btn btn-outline-secondary" style=" border-radius: 20px;">CHECK IN</button></td>
+                <td><button [disabled]="estado" (click)="checkout(reserva);" class="btn btn-outline-secondary" style=" border-radius: 20px;">CHECK OUT</button></td>
                 <td>{{ reserva.fechaSalida }}</td>
                 <td>{{ reserva.dias }}</td>
                 <td>{{ reserva.iva }}</td>

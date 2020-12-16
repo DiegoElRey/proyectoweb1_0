@@ -24,7 +24,7 @@ namespace Logica
                 reserva.IdReserva = numero+"";
                 
                 var respuesta = _context.Habitaciones.Find(reserva.IdHabitacion);
-                respuesta.Estado = "Ocupado";
+                respuesta.Estado = "Pendiente";
                 respuesta.FechaDisponible = reserva.FechaSalida;
                 reserva.CalcularFactura(respuesta);
                 _context.Reservas.Add(reserva);
@@ -39,11 +39,37 @@ namespace Logica
             }
 
         }
+        public GuardarReservaResponse Actualizar(Reserva reserva)
+        {
+            try{
+                var response = _context.Habitaciones.Find(reserva.IdHabitacion);
+                if(response != null){
+                    response.Estado = reserva.Habitacion.Estado;
+                    if (reserva.Habitacion.Estado.Equals("desocupado"))
+                    {
+                        response.FechaDisponible = DateTime.Now;
+                    }
+                    _context.Habitaciones.Update(response);
+                    _context.SaveChanges();
+                    reserva.Habitacion = response;
+                    return new GuardarReservaResponse(reserva);
+                }
+
+                return new GuardarReservaResponse("No se encontró");
+
+            }catch(Exception e){
+                    return new GuardarReservaResponse($"Error de la Aplicacion: {e.Message}");
+            }
+        }
         public ConsultaReservaResponse ConsultarTodos()
         {
             try
             {
                 List<Reserva> reservas = _context.Reservas.ToList();
+                foreach (var item in reservas)
+                {
+                    item.Habitacion = _context.Habitaciones.Find(item.IdHabitacion);
+                }
                 return new ConsultaReservaResponse(reservas);
             }
             catch (Exception e)
