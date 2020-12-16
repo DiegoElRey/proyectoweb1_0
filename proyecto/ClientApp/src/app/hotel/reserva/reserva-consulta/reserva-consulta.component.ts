@@ -1,7 +1,9 @@
+import {  NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Component, OnInit } from '@angular/core';
 import { ReservaService } from 'src/app/services/reserva.service';
 import { Reserva } from '../../models/reserva';
 import { User } from '../../models/user';
+import { AlertModalComponent } from 'src/app/@base/alert-modal/alert-modal.component';
 
 @Component({
   selector: 'app-reserva-consulta',
@@ -16,7 +18,7 @@ export class ReservaConsultaComponent implements OnInit {
   page = 1;
   pageSize =5;
   estado: boolean;
-  constructor(private reservaService: ReservaService) { }
+  constructor(private reservaService: ReservaService, private modalService: NgbModal) { }
   
   ngOnInit(){
     this.reservas = [];
@@ -30,7 +32,9 @@ export class ReservaConsultaComponent implements OnInit {
     reserva.habitacion.estado = "Ocupado";
     this.reservaService.put(reserva).subscribe(p =>{
         if(p != null){
-          alert("Se realizó check in");
+          const messageBox = this.modalService.open(AlertModalComponent)
+        messageBox.componentInstance.title = "Resultado Operación";
+        messageBox.componentInstance.cuerpo = 'Info: Se realizó el check in';
           this.estado = true;
         }
     });
@@ -39,7 +43,9 @@ export class ReservaConsultaComponent implements OnInit {
     reserva.habitacion.estado = "desocupado";
     this.reservaService.put(reserva).subscribe(p =>{
         if(p != null){
-          alert("Se realizó check out");
+          const messageBox = this.modalService.open(AlertModalComponent)
+        messageBox.componentInstance.title = "Resultado Operación";
+        messageBox.componentInstance.cuerpo = 'Info: Se realizó el check out';
           this.estado = true;
         }
     });
