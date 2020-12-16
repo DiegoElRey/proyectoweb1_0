@@ -1,0 +1,107 @@
+<title>REGISTRO DE EMPLEADO</title>
+<br>
+<div class="centrar">
+    <div class="card" style="border-radius: 30px;" id="form">
+        <form name="form" class="centrarForm" (ngSubmit)="f.form.valid && add()" #f="ngForm" novalidate
+            autocomplete="off">
+            <br>
+            <h1 style="text-align: center;">Registrar empleado</h1>
+            <br>
+            <div class="form-group">
+                <input type="text" class="form-control" name="cedula" [(ngModel)]="empleado.cedula" #cedula="ngModel"
+                    placeholder="Numero de identificación"
+                    [ngClass]="{ 'is-invalid': cedula.touched && cedula.invalid }" required />
+                <div *ngIf="cedula.touched && cedula.invalid" class="invalid-feedback">
+                    <div *ngIf="cedula.errors.required">El numero de identificación es requerido</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" name="nombre" [(ngModel)]="empleado.nombre" #nombre="ngModel"
+                    placeholder="Nombre" [ngClass]="{ 'is-invalid': nombre.touched && nombre.invalid }" required />
+                <div *ngIf="nombre.touched && nombre.invalid" class="invalid-feedback">
+                    <div *ngIf="nombre.errors.required">El nombre es requerido</div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <input type="text" class="form-control" name="apellido" [(ngModel)]="empleado.apellido"
+                    #apellido="ngModel" placeholder="Apellido"
+                    [ngClass]="{ 'is-invalid': apellido.touched && apellido.invalid }" required />
+                <div *ngIf="apellido.touched && apellido.invalid" class="invalid-feedback">
+                    <div *ngIf="apellido.errors.required">El apellido es requerido</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" name="username" [(ngModel)]="user.username" #username="ngModel"
+                    placeholder="Usuario" [ngClass]="{ 'is-invalid': username.touched && username.invalid }" required />
+                <div *ngIf="username.touched && username.invalid" class="invalid-feedback">
+                    <div *ngIf="username.errors.required">El username es requerido</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control" name="password" [(ngModel)]="user.password" #password="ngModel"
+                    placeholder="Contraseña" [ngClass]="{ 'is-invalid': password.touched && password.invalid }" required />
+                <div *ngIf="password.touched && password.invalid" class="invalid-feedback">
+                    <div *ngIf="password.errors.required">El password es requerido</div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <select class="form-control" name="sexo" [(ngModel)]="empleado.sexo" #sexo="ngModel" required>
+                    <option value="Seleccionar sexo">Seleccionar sexo</option>
+                    <option value="Masculino">Masculino</option>
+                    <option value="Femenino">Femenino</option>
+                </select>
+                <div *ngIf="sexo.touched && sexo.invalid" class="invalid-feedback">
+                    <div *ngIf="sexo.errors.required">El sexo es requerido</div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <input type="number" class="form-control" name="edad" [(ngModel)]="empleado.edad" #edad="ngModel"
+                    placeholder="Edad" [ngClass]="{ 'is-invalid': edad.touched && edad.invalid }" required />
+                <div *ngIf="edad.touched && edad.invalid" class="invalid-feedback">
+                    <div *ngIf="edad.errors.required">La edad es requerida</div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <input type="text" class="form-control" name="telefono" [(ngModel)]="empleado.telefono"
+                    #telefono="ngModel" placeholder="Telefono"
+                    [ngClass]="{ 'is-invalid': telefono.touched && telefono.invalid }" required />
+                <div *ngIf="telefono.touched && telefono.invalid" class="invalid-feedback">
+                    <div *ngIf="telefono.errors.required">El telefono es requerido</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <select class="form-control" name="cargo" [(ngModel)]="empleado.cargo" #cargo="ngModel" required>
+                    <option value="Seleccionar un cargo">Seleccionar un cargo</option>
+                    <option value="Administrador">Administrador</option>
+                    <option value="gobernanta">Gobernanta</option>
+                    <option value="recepcionista">Recepcionista</option>
+                    <option value="camarera">Camarera</option>
+                    <option value="seguridad">Seguridad </option>
+                    <option value="mantenimiento"> Mantenimiento</option>
+                </select>
+                <div *ngIf="cargo.touched && cargo.invalid" class="invalid-feedback">
+                    <div *ngIf="cargo.errors.required">El cargo es requerido</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <select class="form-control" name="jornada" [(ngModel)]="empleado.jornada" #jornada="ngModel" required>
+                    <option value="Selecciona una jornada">Selecciona una jornada</option>
+                    <option value="diurna">Diurna</option>
+                    <option value="nocturna">Nocturna</option>
+                </select>
+                <div *ngIf="jornada.touched && jornada.invalid" class="invalid-feedback">
+                    <div *ngIf="jornada.errors.required">El jornada es requerido</div>
+                </div>
+            </div>
+
+            <!-- Sign in button -->
+            <button style="border-radius: 30px;" class="btn btn-outline-primary" type="submit"
+                [disabled]="!f.form.valid"><b>Registrar</b></button>
+        </form>
+        <br>
+    </div>
+</div>
