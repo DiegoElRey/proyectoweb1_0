@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Datos;
 using Entity;
 using Logica;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
@@ -11,6 +12,7 @@ using Microsoft.Extensions.Configuration;
 using proyecto.Hubs;
 using ReservaModel;
 
+[Authorize]
 [Route ("api/[controller]")]
 [ApiController]
 public class ReservaController : ControllerBase {

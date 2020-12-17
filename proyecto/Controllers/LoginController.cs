@@ -9,6 +9,7 @@ using proyecto.Models;
 using proyecto.Service;
 namespace proyecto.Controllers
 {
+    [Authorize]
    [ApiController]
     [Route("api/[controller]")]
     public class LoginController : ControllerBase

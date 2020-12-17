@@ -8,7 +8,9 @@ using Entity;
 using Datos;
 using EmpleadoModel;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
 
+[Authorize]
 [Route("api/[controller]")]
 [ApiController]
 

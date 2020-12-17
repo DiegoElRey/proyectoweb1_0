@@ -1,3 +1,4 @@
+using System.Net;
 using Microsoft.AspNetCore.Mvc;
 using Logica;
 using Microsoft.Extensions.Configuration;
@@ -9,7 +10,9 @@ using HabitacionModel;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.SignalR;
 using proyecto.Hubs;
+using Microsoft.AspNetCore.Authorization;
 
+[Authorize]
 [Route("api/[controller]")]
 [ApiController]
 public class HabitacionController : ControllerBase

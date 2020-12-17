@@ -4,10 +4,12 @@ using ClienteModel;
 using Datos;
 using Entity;
 using Logica;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 
+[Authorize]
 [Route("api/[controller]")]
 [ApiController]
 public class ClienteController : ControllerBase
@@ -22,6 +24,7 @@ public class ClienteController : ControllerBase
     }
 
     // GET: api/Persona​
+    
     [HttpGet]
     public ActionResult<ClienteViewModel> Gets()
     {

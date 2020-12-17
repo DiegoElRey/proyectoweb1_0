@@ -6,7 +6,9 @@ using System.Linq;
 using Entity;
 using Datos;
 using PersonaModel;
+using Microsoft.AspNetCore.Authorization;
 
+[Authorize]
 [Route("api/[controller]")]
 [ApiController]
 public class PersonaController : ControllerBase
