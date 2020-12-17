@@ -2,6 +2,8 @@ import { ReservaService } from 'src/app/services/reserva.service';
 import { Component, OnInit } from '@angular/core';
 import { Reserva } from '../models/reserva';
 
+declare var jspdf: any; // Important
+
 @Component({
   selector: 'app-reserva-consulta-cliente',
   templateUrl: './reserva-consulta-cliente.component.html',
@@ -23,7 +25,6 @@ export class ReservaConsultaClienteComponent implements OnInit {
       this.reservas = result;
      });
      
-  }
-  
+  }  
   
 }

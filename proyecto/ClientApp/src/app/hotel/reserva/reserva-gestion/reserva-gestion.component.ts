@@ -34,7 +34,7 @@ export class ReservaGestionComponent implements OnInit {
     this.cliente = new Cliente();
     this.reserva = new Reserva();
     const f = new Date();
-    this.reserva.FechaReserva = f;
+    this.reserva.fechaReserva = f;
     
     
   }
@@ -43,14 +43,14 @@ export class ReservaGestionComponent implements OnInit {
         this.verificar = true;
         if (this.verificar == true) {
           this.habitacionService.get().subscribe(result => {
-            this.habitaciones = result.filter(D => D.fechaDisponible < this.reserva.FechaEntrada);
+            this.habitaciones = result.filter(D => D.fechaDisponible < this.reserva.fechaEntrada);
           });
         }
         
   }
   contarDias(){
-    var fechaEntrada = new Date(this.reserva.FechaEntrada);
-    var fechaSalida = new Date(this.reserva.FechaSalida);
+    var fechaEntrada = new Date(this.reserva.fechaEntrada);
+    var fechaSalida = new Date(this.reserva.fechaSalida);
     
     var day_as_milliseconds = 86400000;
     var diff_in_millisenconds = fechaSalida.getTime() - fechaEntrada.getTime();

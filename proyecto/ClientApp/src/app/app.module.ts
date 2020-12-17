@@ -40,6 +40,7 @@ import { ReservaConsultaComponent } from './hotel/reserva/reserva-consulta/reser
 import { RegistroUsuarioComponent } from './registro-usuario/registro-usuario.component';
 import { FiltroReservaPipe } from './pipe/filtro-reserva.pipe';
 import { ReservaConsultaClienteComponent } from './hotel/reserva-consulta-cliente/reserva-consulta-cliente.component';
+import { FiltroFechaPipe } from './pipe/filtro-fecha.pipe';
 
 @NgModule({
   declarations: [
@@ -75,6 +76,7 @@ import { ReservaConsultaClienteComponent } from './hotel/reserva-consulta-client
     RegistroUsuarioComponent,
     FiltroReservaPipe,
     ReservaConsultaClienteComponent,
+    FiltroFechaPipe,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

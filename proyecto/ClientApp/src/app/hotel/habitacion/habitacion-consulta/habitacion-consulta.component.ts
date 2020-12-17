@@ -13,8 +13,6 @@ import { Reserva } from '../../models/reserva';
 export class HabitacionConsultaComponent implements OnInit {
   habitaciones: Habitacion[];
   searchText: string;
-  page = 1;
-  pageSize =5;
   constructor(private habitacionService: HabitacionService, private reservaService: ReservaService) { }
 
   ngOnInit(){

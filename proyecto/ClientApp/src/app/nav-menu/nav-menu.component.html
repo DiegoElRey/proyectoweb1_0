@@ -103,11 +103,20 @@
                     <img src="assets/factura.png" alt="Logo" style="width: 15%;">
                     <span style="margin-left: 5px;">GESTIÓN RESERVA</span></a>
             </li>
-            <li class="nav-item active">
-                <a class="nav-link" [routerLink]="['/reservaConsultaCliente']" routerLinkActive="router-link-active">
-                    <i class="fas fa-eye" style="color: black;"></i>
-                    <span style="margin-left: 5px;">CONSULTAR RESERVAS</span></a>
-                </li>
+            <div *ngIf="tipo == 'Cliente'">
+                <li class="nav-item active">
+                    <a class="nav-link" [routerLink]="['/reservaConsultaCliente']" routerLinkActive="router-link-active">
+                        <i class="fas fa-eye" style="color: black;"></i>
+                        <span style="margin-left: 5px;">CONSULTAR RESERVAS</span></a>
+                    </li>
+            </div>
+            <div *ngIf="tipo == 'recepcionista'">
+                <li class="nav-item active">
+                    <a class="nav-link" [routerLink]="['/reservaconsulta']" routerLinkActive="router-link-active">
+                        <i class="fas fa-eye" style="color: black;"></i>
+                        <span style="margin-left: 5px;">CONSULTAR RESERVAS</span></a>
+                    </li>
+            </div>
         </div>
     </div>
 </ul>

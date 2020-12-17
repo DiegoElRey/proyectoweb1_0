@@ -26,20 +26,20 @@
 
             <div class="form-group" style="margin-left: 0px;">
                     <label for="e">Fecha de entrada</label>
-                    <input type="date" style="font-size: 16px;" class="form-control" name="FechaEntrada"
-                        [(ngModel)]="reserva.FechaEntrada" #FechaEntrada="ngModel" placeholder="DD/MM/AAAA"
-                        [ngClass]="{ 'is-invalid': FechaEntrada.touched && FechaEntrada.invalid }" required />
-                    <div *ngIf="FechaEntrada.touched && FechaEntrada.invalid" class="invalid-feedback">
-                        <div *ngIf="FechaEntrada.errors.required">La fecha de entrada es requerida</div>
+                    <input type="date" style="font-size: 16px;" class="form-control" name="fechaEntrada"
+                        [(ngModel)]="reserva.fechaEntrada" #fechaEntrada="ngModel" placeholder="DD/MM/AAAA"
+                        [ngClass]="{ 'is-invalid': fechaEntrada.touched && fechaEntrada.invalid }" required />
+                    <div *ngIf="fechaEntrada.touched && fechaEntrada.invalid" class="invalid-feedback">
+                        <div *ngIf="fechaEntrada.errors.required">La fecha de entrada es requerida</div>
                     </div>
                 </div>
                 <div class="form-group" style="margin-left: 0px;">
                     <label for="s">Fecha de salida</label>
-                    <input type="date" style="font-size: 16px;" class="form-control" name="FechaSalida"
-                        [(ngModel)]="reserva.FechaSalida" #FechaSalida="ngModel" placeholder="DD/MM/AAAA"
-                        [ngClass]="{ 'is-invalid': FechaSalida.touched && FechaSalida.invalid }" required />
-                    <div *ngIf="FechaSalida.touched && FechaSalida.invalid" class="invalid-feedback">
-                        <div *ngIf="FechaSalida.errors.required">La fecha de salida es requerida</div>
+                    <input type="date" style="font-size: 16px;" class="form-control" name="fechaSalida"
+                        [(ngModel)]="reserva.fechaSalida" #fechaSalida="ngModel" placeholder="DD/MM/AAAA"
+                        [ngClass]="{ 'is-invalid': fechaSalida.touched && fechaSalida.invalid }" required />
+                    <div *ngIf="fechaSalida.touched && fechaSalida.invalid" class="invalid-feedback">
+                        <div *ngIf="fechaSalida.errors.required">La fecha de salida es requerida</div>
                     </div>
                 </div>
                 <button class="btn btn-outline-primary" (click)="filtrar()"

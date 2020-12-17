@@ -1,9 +1,15 @@
+import { UrlTree } from '@angular/router';
 import {  NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Component, OnInit } from '@angular/core';
 import { ReservaService } from 'src/app/services/reserva.service';
 import { Reserva } from '../../models/reserva';
 import { User } from '../../models/user';
 import { AlertModalComponent } from 'src/app/@base/alert-modal/alert-modal.component';
+
+// declare var jsPDF: any; // Important
+import { jsPDF } from "jspdf";
+
+import autoTable from 'jspdf-autotable'
 
 @Component({
   selector: 'app-reserva-consulta',
@@ -12,12 +18,13 @@ import { AlertModalComponent } from 'src/app/@base/alert-modal/alert-modal.compo
 })
 export class ReservaConsultaComponent implements OnInit {
   searchText: string;
+  searchDate: Date;
   reservas: Reserva[];
   user: User;
   tipo: string;
-  page = 1;
-  pageSize =5;
   estado: boolean;
+  reserva: Reserva;
+  cedula: string;
   constructor(private reservaService: ReservaService, private modalService: NgbModal) { }
   
   ngOnInit(){
@@ -27,7 +34,8 @@ export class ReservaConsultaComponent implements OnInit {
      });
     this.actualizarListaSignal();
   }
- 
+  
+  
   checkin(reserva: Reserva){
     reserva.habitacion.estado = "Ocupado";
     this.reservaService.put(reserva).subscribe(p =>{
@@ -65,6 +73,96 @@ export class ReservaConsultaComponent implements OnInit {
       this.tipo = this.user.tipo;
     }
   } 
+
+  generarFactura(reserva: Reserva) {
+    const doc = new jsPDF()
+ 
+  // It can parse html:
+  // <table id="my-table"><!-- ... --></table>
+    // doc.autoTable({ html: '#my-table' })
+    const columns  = ['DATOS DEL CAMPESINO'];
+    const rows = [
+      ['GGGG'],
+      ['TEL'],
+    ];
+  
+    var url = doc.loadFile('../assets/Hotel.png');
+    doc.text('Hotel Neruda', 90, 28);
+    doc.addImage(url,102,10,0,10)
+
+    autoTable(doc, {
+      startY: 30,
+      columnStyles: { titulo: { halign: 'right'}, value: {halign: 'left'} }, // European countries centered
+      // columns: [{}],
+      body: [
+        { 
+          titulo: 'ID reserva:',
+          value: reserva.idReserva,
+        },
+        { 
+          titulo: 'Cedula:',
+          value: reserva.cedula,
+        },
+        { 
+          titulo: 'Número de la habitación:',
+          value: reserva.idHabitacion,
+        },
+        { 
+          titulo: 'Fecha reserva:',
+          value: reserva.fechaReserva + "",
+        },
+        { 
+          titulo: 'Fecha entrada:',
+          value: reserva.fechaEntrada + "",
+        },
+        { 
+          titulo: 'Fecha salida:',
+          value: reserva.fechaSalida + "",
+        },
+        { 
+          titulo: 'Número de días:',
+          value: reserva.dias,
+        },
+        { 
+          titulo: 'Número de personas:',
+          value: reserva.habitacion.nPersonas,
+        },
+        { 
+          titulo: 'Tipo:',
+          value: reserva.habitacion.tipo,
+        },
+        { 
+          titulo: 'Precio:',
+          value: reserva.habitacion.precio,
+        },
+        { 
+          titulo: 'IVA:',
+          value: reserva.iva,
+        },
+        { 
+          titulo: 'Subtotal:',
+          value: reserva.subTotal,
+        },
+        { 
+          titulo: 'Total:',
+          value: reserva.total,
+        },
+      ],
+    });
+    // doc.autoTable({columns, rows,startY: 20, pageBreak: 'auto'});
+
+    // Or use javascript directly:
+    // doc.autoTable({
+    //   head: [['Name', 'Email', 'Country']],
+    //   body: [
+    //     ['David', 'david@example.com', 'Sweden'],
+    //     ['Castille', 'castille@example.com', 'Spain'],
+    //     // ...
+    //   ],
+    // })
+    
+    doc.save('table.pdf')
+  }
   
 
 }

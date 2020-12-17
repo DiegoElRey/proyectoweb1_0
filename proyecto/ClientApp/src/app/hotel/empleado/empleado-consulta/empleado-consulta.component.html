@@ -10,11 +10,6 @@
     <table class="table table-bordered" id="myTable" *ngIf='empleados && empleados.length'>
         <thead>
             <tr class="thead-dark">
-                <th scope="col"><select [(ngModel)]="pageSize" style="background-color: rgb(52, 58, 64); border: 0px;">
-                    <option selected>5</option>
-                    <option>10</option>
-                    <option>20</option>
-                    <option>50</option></select></th>
                 <th (click)="sortTable(1)">Cedula >> </th>
                 <th (click)="sortTable(2)">Nombre >></th>
                 <th (click)="sortTable(5)">Apellido >></th>
@@ -23,13 +18,11 @@
                 <th (click)="sortTable(8)">Telefono>></th>
                 <th (click)="sortTable(10)">Jornada>></th>
                 <th (click)="sortTable(11)">Cargo>></th>
-                <th (click)="sortTable(12)">Cedula Jefe>></th>
                
             </tr>
         </thead>
         <tbody class="table-primary">
             <tr *ngFor="let empleado of empleados|filtroEmpleado:searchText |slice: (page-1) * pageSize : (page-1) * pageSize + pageSize; index as i ">
-                <td scope="row">{{ i + 1 }}</td>
                 <td>{{ empleado.cedula}} </td>
                 <td>{{ empleado.nombre }}</td>
                 <td>{{ empleado.apellido }}</td>
@@ -38,13 +31,11 @@
                 <td>{{ empleado.telefono}}</td>
                 <td>{{ empleado.jornada}}</td>
                 <td>{{ empleado.cargo}}</td>
-                <td>{{ empleado.jefe}}</td>
                 <!--
                     <td> <a routerLink='/personaEdicion/{{cliente.cedula}}'>Modificar</a> <button id="divcontainer2" class="btn btn-primary">Eliminar</button></td>
                 -->
             </tr>
         </tbody>
     </table>
-    <ngb-pagination [(page)]="page" [pageSize]="pageSize" [collectionSize]="empleados.length"></ngb-pagination>
 </div>
 <br><br><br><br><br><br>
