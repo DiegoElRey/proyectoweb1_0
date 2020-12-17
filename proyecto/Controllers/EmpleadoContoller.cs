@@ -1,3 +1,4 @@
+using System.Net;
 using Microsoft.AspNetCore.Mvc;
 using Logica;
 using Microsoft.Extensions.Configuration;
@@ -10,6 +11,7 @@ using Microsoft.AspNetCore.Http;
 
 [Route("api/[controller]")]
 [ApiController]
+
 public class EmpleadoController : ControllerBase
 {
     private readonly EmpleadoService _empleadoService;

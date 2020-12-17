@@ -1,8 +1,9 @@
+<title>CONSULTAR RESERVAS</title>
 <br>
 
 <div class="centrar">
     <div class="card" style="border-radius: 30px;" id="form">
-        <form name="form" class="centrarForm" (ngSubmit)="f.form.valid" #f="ngForm" novalidate autocomplete="off">
+        <form name="form" class="centrarForm" (ngSubmit)="f.form.valid" #f="ngForm" novalidate autocomplete="off" style="margin-left: 50px; margin-right: 50px;">
             <br>
             <div class="input-group-prepend" style="margin-bottom: -43px;">
                 <button class="btn btn-outline-primary" (click)="BuscarCedula()" type="button" [disabled]="!f.form.valid"
@@ -22,44 +23,42 @@
     </div>
 </div>
 <br><br>
-<div class="table-responsive" id="rcorners1" >
+<div class="centrar">
 
-    <table class="table table-bordered" id="myTable">
-            <thead>
-                <tr class="thead-dark">
-                    <th scope="col"><select [(ngModel)]="pageSize" style="background-color: rgb(52, 58, 64); border: 0px;">
-                        <option selected>5</option>
-                        <option>10</option>
-                        <option>20</option>
-                        <option>50</option></select></th>
-                    <th scope="col">Id Reserva  </th>
-                    <th scope="col">Cedula </th>
-                    <th scope="col">Número de habitación </th>
-                    <th scope="col">Fecha de la reserva </th>
-                    <th scope="col">Fecha de entrada </th>
-                    <th scope="col">Fecha de salida </th>
-                    <th scope="col">Numero de días </th>
-                    <th scope="col">iva </th>
-                    <th scope="col">Subtotal </th>
-                    <th scope="col">Total </th>
-                    
-                </tr>
-            </thead>
-            <tbody id="tbodypulsacion" class="table-primary">
-                <tr *ngFor="let reserva of reservas ; let i = index ">
-                    <td scope="row">{{ i + 1 }}</td>
-                    <td>{{ reserva.idReserva }} </td>
-                    <td>{{ reserva.cedula }}</td>
-                    <td>{{ reserva.idHabitacion }}</td>
-                    <td>{{ reserva.fechaReserva }}</td>
-                    <td>{{ reserva.fechaEntrada }}</td>
-                    <td>{{ reserva.fechaSalida }}</td>
-                    <td>{{ reserva.dias }}</td>
-                    <td>{{ reserva.iva }}</td>
-                    <td>{{ reserva.subTotal }}</td>
-                    <td>{{ reserva.total }}</td>
-                </tr>
-            </tbody>
-        </table>
-        <ngb-pagination [(page)]="page" [pageSize]="pageSize" [collectionSize]="reservas.length"></ngb-pagination>
+    <div class="card" style="border-radius: 20px;">
+        <div class="card-body">
+
+            <div class="container" style="margin-left: -0px;">
+
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>### </th>
+                            <th>Número de habitación </th>
+                            <th>Fecha de entrada </th>
+                            <th>Fecha de salida </th>
+                            <th>Numero de días </th>
+                            <th>Total </th>
+                            <th >Editar</th>
+                            <th >Eliminar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let reserva of reservas ; let i = index ">
+                            <td scope="row">{{ i + 1 }}</td>
+                            <td>{{ reserva.idHabitacion }}</td>
+                            <td>{{ reserva.fechaEntrada }}</td>
+                            <td>{{ reserva.fechaSalida }}</td>
+                            <td>{{ reserva.dias }}</td>
+                            <td>{{ reserva.total }}</td>
+                            <td><button  style=" border-radius: 15px; margin-top: 15px;" class="btn btn-primary"><i class="far fa-edit"></i></button></td>
+                            <td><button  style=" border-radius: 15px; margin-top: 15px;" class="btn btn-danger"><i class="far fa-trash-alt"></i></button></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+
     </div>
+</div>

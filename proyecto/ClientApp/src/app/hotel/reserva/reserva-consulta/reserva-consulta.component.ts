@@ -149,6 +149,7 @@ export class ReservaConsultaComponent implements OnInit {
         },
       ],
     });
+    doc.text('¡Gracias por su visita!', 80, 135);
     // doc.autoTable({columns, rows,startY: 20, pageBreak: 'auto'});
 
     // Or use javascript directly:
