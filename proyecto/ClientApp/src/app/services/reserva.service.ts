@@ -1,10 +1,9 @@
+import { Reserva } from './../hotel/models/reserva';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { EventEmitter, Inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators';
 import { HandleHttpErrorService } from '../@base/handle-http-error.service';
-import { Persona } from '../hotel/models/persona';
-import { Reserva } from '../hotel/models/reserva';
 import * as singnalR from '@aspnet/signalr';
 
 const httpOptions = {
@@ -80,5 +79,11 @@ export class ReservaService {
         tap(_ => this.handleErrorService.log('datos enviados')),
         catchError(this.handleErrorService.handleError<Reserva>('Registrar Reserva', null))
       );
+  }
+  delete(numeroreserva: string): Observable<Reserva> {
+    return this.http.get<Reserva>(this.baseUrl + 'api/Reserva/' + numeroreserva).pipe(
+      tap(_ => this.handleErrorService.log('Datos')),
+      catchError(this.handleErrorService.handleError<Reserva>('Consulta Reserva', null))
+    );
   }
 }

@@ -6,7 +6,6 @@ import { HomeComponent } from './home/home.component';
 import { ClienteConsultaComponent } from './hotel/cliente/cliente-consulta/cliente-consulta.component';
 import { ClienteRegistroComponent } from './hotel/cliente/cliente-registro/cliente-registro.component';
 import { ClienteGestionComponent } from './hotel/cliente/cliente-gestion/cliente-gestion.component';
-import { AdministracionComponent } from './hotel/administracion/administracion.component';
 import { EmpleadoRegistroComponent } from './hotel/empleado/empleado-registro/empleado-registro.component';
 import { EmpleadoConsultaComponent } from './hotel/empleado/empleado-consulta/empleado-consulta.component';
 import { EmpleadoGestionComponent } from './hotel/empleado/empleado-gestion/empleado-gestion.component';
@@ -38,7 +37,6 @@ const routes: Routes = [
   { path: 'habitacionregistro', component: HabitacionRegistroComponent, canActivate: [AuthGuard]},
   { path: 'habitacionconsulta', component: HabitacionConsultaComponent, canActivate: [AuthGuard] },
   { path: 'habitaciongestion', component: HabitacionGestionComponent, canActivate: [AuthGuard] },
-  { path: 'administracion', component: AdministracionComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent},
   { path: '', component: HomeComponent}
 ];

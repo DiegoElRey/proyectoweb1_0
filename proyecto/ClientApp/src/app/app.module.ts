@@ -6,7 +6,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-
 import { JwtInterceptor } from './services/jwt.interceptor';
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
@@ -16,7 +15,6 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { ClienteConsultaComponent } from './hotel/cliente/cliente-consulta/cliente-consulta.component';
 import { FooterComponent } from './footer/footer.component';
 import { AppRoutingModule } from './app-routing.module';
-import { AdministracionComponent } from './hotel/administracion/administracion.component';
 import { ClienteGestionComponent } from './hotel/cliente/cliente-gestion/cliente-gestion.component';
 import { ClienteRegistroComponent } from './hotel/cliente/cliente-registro/cliente-registro.component';
 import { FacturaConsultaComponent } from './hotel/factura/factura-consulta/factura-consulta.component';
@@ -53,7 +51,6 @@ import { FiltroFechaPipe } from './pipe/filtro-fecha.pipe';
     ClienteRegistroComponent,
     ClienteGestionComponent,
     FooterComponent,
-    AdministracionComponent,
     FacturaConsultaComponent,
     FacturaRegistroComponent,
     FacturaGestionComponent,

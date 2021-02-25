@@ -8,7 +8,7 @@
             <h1 style="text-align: center;">Registrar empleado</h1>
             <br>
             <div class="form-group">
-                <input type="text" class="form-control" name="cedula" [(ngModel)]="empleado.cedula" #cedula="ngModel"
+                <input type="text" class="form-control" name="cedula" [(ngModel)]="empleado.cedula" maxlength="11" #cedula="ngModel"
                     placeholder="Numero de identificación"
                     [ngClass]="{ 'is-invalid': cedula.touched && cedula.invalid }" required />
                 <div *ngIf="cedula.touched && cedula.invalid" class="invalid-feedback">

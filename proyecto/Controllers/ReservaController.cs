@@ -106,4 +106,11 @@ public class ReservaController : ControllerBase {
             };
         return reserva;
     }
+    // DELETE: api/Persona/5
+        [HttpDelete("{identificacion}")]
+        public ActionResult<string> Eliminar(string numeroreserva)
+        {
+            string mensaje = _reservaService.Eliminar(numeroreserva);
+            return Ok(mensaje);
+        }
 }

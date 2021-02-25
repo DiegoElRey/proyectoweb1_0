@@ -1,6 +1,7 @@
 import { ReservaService } from 'src/app/services/reserva.service';
 import { Component, OnInit } from '@angular/core';
 import { Reserva } from '../models/reserva';
+import { AlertModalComponent } from 'src/app/@base/alert-modal/alert-modal.component';
 
 declare var jspdf: any; // Important
 
@@ -15,6 +16,7 @@ export class ReservaConsultaClienteComponent implements OnInit {
   public a: string;
   page = 1;
   pageSize =5;
+  modalService: any;
   constructor(private reservaService: ReservaService) { }
 
   ngOnInit(){
@@ -26,5 +28,14 @@ export class ReservaConsultaClienteComponent implements OnInit {
      });
      
   }  
+
+  Eliminar(reserva: Reserva){
+    this.reservaService.delete(reserva.idReserva);
+    if(reserva == null){
+      const messageBox = this.modalService.open(AlertModalComponent)
+      messageBox.componentInstance.title = "Resultado Operación";
+      messageBox.componentInstance.cuerpo = 'Info: Se eliminó esta reserva';
+    }
+  }
   
 }

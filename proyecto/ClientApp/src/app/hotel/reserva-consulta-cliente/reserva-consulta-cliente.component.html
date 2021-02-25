@@ -51,7 +51,7 @@
                             <td>{{ reserva.fechaSalida }}</td>
                             <td>{{ reserva.dias }}</td>
                             <td>{{ reserva.total }}</td>
-                            <td><button  style=" border-radius: 15px; margin-top: 15px;" class="btn btn-primary"><i class="far fa-edit"></i></button></td>
+                            <td><button  style=" border-radius: 15px; margin-top: 15px;" class="btn btn-primary" (click)="Eliminar(reserva)"><i class="far fa-edit"></i></button></td>
                             <td><button  style=" border-radius: 15px; margin-top: 15px;" class="btn btn-danger"><i class="far fa-trash-alt"></i></button></td>
                         </tr>
                     </tbody>
